@@ -1,0 +1,64 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/chess/king-rook-vs-king-pawn/kr-vs-kp.data'
+ionosphere = pd.read_csv(url)
+ionosphere.head()
+
+
+clmns = []
+pulse_no1 = 0
+
+for i in range(0, ionosphere.shape[1] - 1):
+    
+    if (i%2 == 0):
+        pulse_no1 = pulse_no1 + 1
+        pulse_no2 = 1
+    else:
+        pulse_no2 = 2
+    clmns.append('Pulse ' + str(pulse_no1) + '.' + str(pulse_no2))
+
+clmns.append('Structure detected')
+
+ionosphere.columns = clmns
+
+ionosphere.head()
+ionosphere.info()
+
+
+clmns = []
+pulse_no1 = 0
+
+for i in range(0, ionosphere.shape[1] - 1):
+    
+    if (i%2 == 0):
+        pulse_no1 = pulse_no1 + 1
+        pulse_no2 = 1
+    else:
+        pulse_no2 = 2
+    clmns.append('Pulse ' + str(pulse_no1) + '.' + str(pulse_no2))
+
+clmns.append('Structure detected')
+ionosphere.columns = clmns
+ionosphere.head()
+ionosphere.info()
+ionosphere.isin([1]).sum(axis = 0)[:1] #checking whether all entries of Pulse 1.1 are 1
+ionosphere.isin([0]).sum(axis = 0)[1:2] #checking whether all entries of Pulse 1.2 are 0
+
+ionosphere = ionosphere.drop(['Pulse 1.2'], axis = 1)
+ionosphere
+
+# Detecting dtype inconsistency
+print('Columns with data type inconsistensy:')
+n_weird_columns = 0
+for col in ionosphere.columns:
+    weird = (ionosphere[[col]].applymap(type) != ionosphere[[col]].iloc[0].apply(type)).any(axis=1)
+    if len(ionosphere[weird]) > 0:
+        print(col)
+        n_weird_columns = n_weird_columns + 1
+if (n_weird_columns == 0):
+    print('None')
+    
+    
