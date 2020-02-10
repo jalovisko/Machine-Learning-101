@@ -39,7 +39,7 @@ class Naive_Bayes_Mixed():
 
         # How many categories are there in each categorical_feature
         # Add 1 due to zero-indexing
-        max_categories = np.max(X[:, self.categorical_features], axis=0) + 1
+        max_categories = np.max(X.to_numpy()[:, self.categorical_features], axis=0) + 1
         max_categories = max_categories.astype(int)
 
         # Prepare empty arrays
@@ -49,7 +49,7 @@ class Naive_Bayes_Mixed():
         if self.categorical_features.size != 0:
             categorical_posteriors = [
                     np.zeros((num_classes, num_categories))
-                    for num_categories in self.max_categories]
+                    for num_categories in max_categories]
 
         # TODO optimise below!
         for y_i in uniques:
