@@ -55,7 +55,7 @@ class Naive_Bayes_Mixed():
         for y_i in uniques:
 
             if self.gaussian_features.size != 0:
-                x = X[y == y_i, :][:, self.gaussian_features]
+                x = X.to_numpy()[y == y_i, :][:, self.gaussian_features]
                 w[y_i, :] = np.mean(x, axis=0)
                 # note: it's really sigma squared
                 sigma[y_i, :] = np.var(x, axis=0)
@@ -63,7 +63,7 @@ class Naive_Bayes_Mixed():
             if self.categorical_features.size != 0:
                 for i, categorical_feature in enumerate(self.categorical_features):
                     dist = np.bincount(
-                            X[y == y_i, :][:, categorical_feature].astype(int),
+                            X.to_numpy()[y == y_i, :][:, categorical_feature].astype(int),
                             minlength = max_categories[i]) + self.alpha
                     categorical_posteriors[i][y_i, :] = dist / np.sum(dist)
 
