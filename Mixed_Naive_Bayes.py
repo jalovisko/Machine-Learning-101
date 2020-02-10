@@ -15,7 +15,7 @@ class Naive_Bayes_Mixed():
         self.categorical_features = categorical_features
         self.alpha = alpha
     
-def fit(self, X, y): 
+    def fit(self, X, y): 
 
         # Get whatever that is needed
         uniques = np.unique(y)
@@ -28,13 +28,13 @@ def fit(self, X, y):
         if self.categorical_features is None:
             self.categorical_features = []
         elif self.categorical_features is 'all':
-            self.categorical_features = np.arange(0, self.num_features)
+            self.categorical_features = np.arange(0, num_features)
 
         # Get the index columns of the discrete data and continuous data
         self.categorical_features = np.array(
                 self.categorical_features).astype(int)
         self.gaussian_features = np.delete(
-                np.arange(self.num_features),
+                np.arange(num_features),
                 self.categorical_features)
 
         # How many categories are there in each categorical_feature
