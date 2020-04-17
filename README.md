@@ -28,3 +28,6 @@ Below are the files that cover the whole project. The other files are suppliment
 * Originality: 8/15
 * detailed data analysis on the four datasets (+8)
 Total: 83%
+
+## Note
+The repositary was private for the duration of developement and was made public on Apr 16, 2020.
