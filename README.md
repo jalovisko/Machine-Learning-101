@@ -17,3 +17,14 @@ Below are the files that cover the whole project. The other files are suppliment
 * COMP 551 - Project 1 - Ionosphere.ipynb
 * COMP 551 - Project 1 - Tic-Tac-Toe Endgame.ipynb
 * writeup.pdf
+
+## Feedback
+
+* Completeness: 20/20
+* Corrnectness: 32/40
+* (-2) The experiments on different training sizes is not correct: you should fixed the size of the test set (e.g. 20% of all data), then change the size of the training set (e.g. 100%/90%/80%/70% of the complete 80% training set)
+* Writing: 20/25
+* exceed the page requirements (5 v.s. 11) (-5) (p.s. you should put all extra things in an appendix. If you are submitting to a conference, exceeding required pages will be rejected directly....)
+* Originality: 8/15
+* detailed data analysis on the four datasets (+8)
+Total: 83%
